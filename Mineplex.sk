@@ -2824,6 +2824,8 @@ command /a [<text>]:
 					play "NOTE_PLING" to loop-player at volume 0.5
 
 command /ma [<player>] [<text>]:
+	permission: mineplex.trainee
+	permission message: &9Permissions> &7This requires Permission Rank [&9TRAINEE&7].
 	trigger:
 		if {mineplex.disguise.%player%} is set:
 			send "&9Admin> &7Disguised users cannot use /a while disguised!"
