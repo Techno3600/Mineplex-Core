@@ -2840,20 +2840,17 @@ command /ma [<player>] [<text>]:
 			set {_display2} to "&fPlayer %arg-1%"
 		else:
 			set {_display2} to "%{mineplex.displaya.%arg-1%}% %arg-1%"
-		if player has permission "mineplex.trainee":
-			if argument 1 and argument 2 is set:
-				if arg-1 does not have permission "mineplex.trainee":
-					send "&d<- %{_display}% &d%arg-2%" to arg-1
-					play "NOTE_PLING" to arg-1 at volume 0.5
-				set {mineplex.lasta.%player%} to arg-1
-				loop all players:
-					if loop-player has permission "mineplex.trainee":
-						send "%{_display}% &d-> %{_display2}% &d%arg-2%" to loop-player
-						play "NOTE_PLING" to loop-player at volume 0.5
+		if argument 1 and argument 2 is set:
+			if arg-1 does not have permission "mineplex.trainee":
+				send "&d<- %{_display}% &d%arg-2%" to arg-1
+				play "NOTE_PLING" to arg-1 at volume 0.5
+			set {mineplex.lasta.%player%} to arg-1
+			loop all players:
+				if loop-player has permission "mineplex.trainee":
+					send "%{_display}% &d-> %{_display2}% &d%arg-2%" to loop-player
+					play "NOTE_PLING" to loop-player at volume 0.5
 			else:
 				send "&9Message> &cErr...something went wrong?"
-		else:
-			send "&9Permissions> &7This requires Permission Rank [&9TRAINEE&7]."
 
 command /ra [<text>]:
 	permission: mineplex.trainee
