@@ -2849,8 +2849,8 @@ command /ma [<player>] [<text>]:
 				if loop-player has permission "mineplex.trainee":
 					send "%{_display}% &d-> %{_display2}% &d%arg-2%" to loop-player
 					play "NOTE_PLING" to loop-player at volume 0.5
-			else:
-				send "&9Message> &cErr...something went wrong?"
+		else:
+			send "&9Message> &cErr...something went wrong?"
 
 command /ra [<text>]:
 	permission: mineplex.trainee
