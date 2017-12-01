@@ -5101,8 +5101,18 @@ command /locate [<string>]:
 		if argument 1 is set:
 			set {_tmp} to arg 1 parsed as an offline player
 			if {_tmp} is online:
-				set {_mineplex.locate.temp} to "%{_tmp}'s world%"
-				send "&9Locate> &7Located [&e%arg-1%&7] at &9%{_mineplex.locate.temp}%"
+				if {_tmp} has permission "mineplex.admin":
+					set {mineplex.locate.temp} to "%{_tmp}'s world%"
+					set {mineplex.locateplayer.name} to "%{mineplex.displaya.%arg-1%}% %arg-1%"
+					send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
+					set {_p} to player
+					set {mineplex.locateadmin.name} to "%{mineplex.displaya.%{_p}%}% %{_p}%"
+					send "&9Locate> %{mineplex.locateadmin.name}% &7has located you." to {_tmp}
+				else:
+					set {_p} to {_tmp}
+					set {mineplex.locateplayer.name} to "%{mineplex.displaya.%{_p}%}% %{_p}%"
+					set {mineplex.locate.temp} to "%{_tmp}'s world%"
+					send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
 			else:
 				send "&9Locate> &7Failed to locate [&e%arg-1%&7]."
 		else:
