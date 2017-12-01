@@ -6152,11 +6152,11 @@ command /news [<string>] [<string>] [<string>]:
 					send "&9Hub Manager> &cYour arguments are inappropriate for this command!"
 			else:
 				send "&9News Manager> &7Available news arguments for this command:"
-				send "&6/news list &7Lists (numbered) stored news messages from database. &cAdmin"
-				send "&6/news add <newsEntry> &7Adds specified news entry string to database at end of table. &cAdmin"
-				send "&6/news delete ## &7Removes specified (numbered) news entry string from database. &cAdmin"
-				send "&6/news set ## <newsEntry> &7Updates specified (numbered) news entry string from database. &cAdmin"
-				send "&c*Please Note: &7Updates to server news entries from the database are on a 4 minute cycle! &cAdmin"
+				send "&6/news list &7Lists (numbered) stored news messages from database. &4Admin"
+				send "&6/news add <newsEntry> &7Adds specified news entry string to database at end of table. &4Admin"
+				send "&6/news delete ## &7Removes specified (numbered) news entry string from database. &4Admin"
+				send "&6/news set ## <newsEntry> &7Updates specified (numbered) news entry string from database. &4Admin"
+				send "&c*Please Note: &7Updates to server news entries from the database are on a 4 minute cycle! &4Admin"
 
 command /r [<text>]:
 	aliases: /reply
