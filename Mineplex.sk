@@ -5093,7 +5093,7 @@ command /silence:
 			set {mineplex.chatsilence} to true
 			send "&9Chat> &7The chat has been silenced for &aPermanent&7." to all players
 
-ommand /locate [<string>]:
+command /locate [<string>]:
 	aliases: /find, /where
 	permission: mineplex.trainee
 	permission message: &9Permissions> &7This requires Permission Rank [&9TRAINEE&7].
