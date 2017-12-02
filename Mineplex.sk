@@ -5093,7 +5093,7 @@ command /silence:
 			set {mineplex.chatsilence} to true
 			send "&9Chat> &7The chat has been silenced for &aPermanent&7." to all players
 
-command /locate [<string>]:
+ommand /locate [<string>]:
 	aliases: /find, /where
 	permission: mineplex.trainee
 	permission message: &9Permissions> &7This requires Permission Rank [&9TRAINEE&7].
@@ -5103,16 +5103,23 @@ command /locate [<string>]:
 			if {_tmp} is online:
 				if {_tmp} has permission "mineplex.admin":
 					set {mineplex.locate.temp} to "%{_tmp}'s world%"
-					set {mineplex.locateplayer.name} to "%{mineplex.displaya.%arg-1%}% %arg-1%"
-					send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
-					set {_p} to player
-					set {mineplex.locateadmin.name} to "%{mineplex.displaya.%{_p}%}% %{_p}%"
-					send "&9Locate> %{mineplex.locateadmin.name}% &7has located you." to {_tmp}
+					if {mineplex.rank.%player%} is "":
+						set {mineplex.locateplayer.name} to "Player %{_tmp}%"
+						send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
+						set {mineplex.locateadmin.name} to "%{mineplex.displaya.%player%}% %player%"
+						send "&9Locate> %{mineplex.locateadmin.name}% &7has located you." to {_tmp}					
+					else:
+						set {mineplex.locateplayer.name} to "%{mineplex.displaya.%{_tmp}%}% %{_tmp}%"
+						send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
+						set {mineplex.locateadmin.name} to "%{mineplex.displaya.%player%}% %player%"
+						send "&9Locate> %{mineplex.locateadmin.name}% &7has located you." to {_tmp}
 				else:
-					set {_p} to {_tmp}
-					set {mineplex.locateplayer.name} to "%{mineplex.displaya.%{_p}%}% %{_p}%"
-					set {mineplex.locate.temp} to "%{_tmp}'s world%"
-					send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
+					if {mineplex.rank.%{_p}%} is "":
+						set {mineplex.locateplayer.name} to "Player %{_tmp}%"
+						send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
+					else:
+						set {mineplex.locateplayer.name} to "%{mineplex.displaya.%{_tmp}%}% %{_tmp}%"
+						send "&9Locate> &7Located %{mineplex.locateplayer.name}%&7 at &9%{mineplex.locate.temp}%"
 			else:
 				send "&9Locate> &7Failed to locate [&e%arg-1%&7]."
 		else:
